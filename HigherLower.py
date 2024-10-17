@@ -41,7 +41,7 @@ class Deck:
     def __init__(self):
         self.cards = [Card(suit, rank) for suit in Card.suits for rank in Card.ranks]
 
-    def shuffle(self):
+    def shuffle(self,):
         random.shuffle(self.cards)
 
     def debug_print_deck(self):
@@ -50,5 +50,17 @@ class Deck:
     
     def deal(self, num_cards = 1):
         pass
+
+play=input("do you waht to play").lower()
+
+if play == "yes":
+    Deck().shuffle()
+    Deck().deal()
+elif play == "no":
+     print("end program")
+
+else:
+    play=input("do you waht to play").lower()
+    
 
 Deck().debug_print_deck()
