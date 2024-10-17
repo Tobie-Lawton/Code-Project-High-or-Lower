@@ -1,7 +1,7 @@
 import random
 
 class Card:
-    
+
     #Represents a playing card with a suit and rank.
     suits = ["♠", "♥", "♦", "♣"]
     ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
@@ -40,27 +40,52 @@ class Deck:
     #Initializes a Deck object with a full deck of 52 cards.
     def __init__(self):
         self.cards = [Card(suit, rank) for suit in Card.suits for rank in Card.ranks]
-
-    def shuffle(self,):
+        
+    
+    def shuffle(self):
         random.shuffle(self.cards)
 
     def debug_print_deck(self):
         for card in self.cards:
             print(card.card_str())
-    
+
     def deal(self, num_cards = 1):
         pass
+          
+    def startgame(self,cards):
+        play=input("do you waht to play").lower()
+        if play == "yes":
+            random.shuffle(self.cards)
+            oldcard = self.cards.pop(0)
+            print(oldcard)
+            Desition=input("higher or lower").lower()
+            if Desition == "higher":
+                newcard = self.cards.pop(0)
+                print(newcard)
+                if higher(newcard, oldcard):
+                    print("words")
+            elif Desition == "lower":
+                print(self.cards[0])
+            else:
+                Desition=input("higher or lower").lower()
+        elif play == "no":
+             print("end program")
+        else:
+            play=input("do you waht to play").lower()
 
-play=input("do you waht to play").lower()
+def card1(self, newcard):
+    return Card.rank_value[newcard]
 
-if play == "yes":
-    Deck().shuffle()
-    Deck().deal()
-elif play == "no":
-     print("end program")
+def card2(self, oldcard):
+    return Card.rank_value[oldcard]
 
-else:
-    play=input("do you waht to play").lower()
+# true if card1 > card2
+def higher(card1, card2):
+    True if card1 > card2 else False
+    True if card2 < card1 else False
     
+def lower(card1, card2):
+    True if card1 < card2 else False
+    True if card2 > card1 else False    
 
-Deck().debug_print_deck()
+Deck().startgame(())
