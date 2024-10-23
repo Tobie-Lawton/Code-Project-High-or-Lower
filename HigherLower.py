@@ -1,9 +1,10 @@
+from IPython.core.display import clear_output
 import random
 
 class Card:
 
     #Represents a playing card with a suit and rank.
-    suits = ["♠", "♥", "♦", "♣"]
+    suits = ["♥","♣","♦","♠",]
     ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 
     def __init__(self, suit, rank):
@@ -13,6 +14,7 @@ class Card:
 
         self.suit = suit
         self.rank = rank
+        self.value = (suit.index())*(rank.index())
 
     def __str__(self):
         return f"{self.rank}{self.suit}"
@@ -52,6 +54,8 @@ class Deck:
     def deal(self, num_cards = 1):
         pass
           
+    
+    
     def startgame(self,cards):
         play=input("do you waht to play").lower()
         if play == "yes":
@@ -74,10 +78,10 @@ class Deck:
             play=input("do you waht to play").lower()
 
 def card1(self, newcard):
-    return Card.rank_value[newcard]
+    return Card.self.rank_value[newcard]
 
 def card2(self, oldcard):
-    return Card.rank_value[oldcard]
+    return Card.self.rank_value[oldcard]
 
 # true if card1 > card2
 def higher(card1, card2):
