@@ -14,7 +14,8 @@ class Card:
 
         self.suit = suit
         self.rank = rank
-        self.value = (suit.index())*(rank.index())
+        #self.value = (Card.index(suit))*(Card.index(rank))
+        self.value = self.ranks.index(rank)
 
     def __str__(self):
         return f"{self.rank}{self.suit}"
@@ -50,46 +51,47 @@ class Deck:
     def debug_print_deck(self):
         for card in self.cards:
             print(card.card_str())
-
-    def deal(self, num_cards = 1):
-        pass
-          
     
-    
-    def startgame(self,cards):
-        play=input("do you waht to play").lower()
+    def startgame(self):
+        play=input("Do You What To Play ").lower()
         if play == "yes":
+            hi = True
             random.shuffle(self.cards)
             oldcard = self.cards.pop(0)
             print(oldcard)
-            Desition=input("higher or lower").lower()
+            hi = True
+        elif play == "no":
+            print("Good Bye")
+            hi = False
+        else:
+            play=input("Do You What To Play ").lower()
+    
+        while hi == True:
+            Desition=input("Higher Or Lower ").lower()
             if Desition == "higher":
                 newcard = self.cards.pop(0)
-                print(newcard)
-                if higher(newcard, oldcard):
-                    print("words")
+                if higher(oldcard, newcard) == True:
+                    print("Corrent")
+                    print(newcard)
+                elif higher(oldcard, newcard) == False:
+                    print ("You Lose")
+                    hi = False
             elif Desition == "lower":
-                print(self.cards[0])
+                newcard = self.cards.pop(0)
+                if lower(oldcard, newcard) == True:
+                    print("Corrent")
+                    print(newcard)
+                elif lower(oldcard, newcard) == False:  
+                    print ("You Lose")
+                    hi = False
             else:
-                Desition=input("higher or lower").lower()
-        elif play == "no":
-             print("end program")
-        else:
-            play=input("do you waht to play").lower()
+                Desition=input("Ither Enter Higher Or Lower ").lower()
+                
+def higher(oldcard, newcard):
+    return newcard.value > oldcard.value
 
-def card1(self, newcard):
-    return Card.self.rank_value[newcard]
+def lower(newcard, oldcard):
+    return newcard.value < oldcard.value   
 
-def card2(self, oldcard):
-    return Card.self.rank_value[oldcard]
-
-# true if card1 > card2
-def higher(card1, card2):
-    True if card1 > card2 else False
-    True if card2 < card1 else False
-    
-def lower(card1, card2):
-    True if card1 < card2 else False
-    True if card2 > card1 else False    
-
-Deck().startgame(())
+deck_instance = Deck()
+deck_instance.startgame()
